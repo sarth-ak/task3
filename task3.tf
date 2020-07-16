@@ -136,17 +136,4 @@ aws_security_group.sg_for_mysql
     Name = "MYSQL_TAG"
   } 
 }
-//EXTRAs
-resource "aws_instance" "Bash_host" {
-  depends_on=[
-aws_security_group.sg_for_mysql
-]
-  ami           = "ami-052c08d70def0ac62"
-  instance_type = "t2.micro"
-  key_name = "mykey5"
-  subnet_id= aws_subnet.subnet1.id
-  vpc_security_group_ids=["${aws_security_group.sg_for_wp.id}"]
-  tags = {
-    Name = "bash_TAG"
-  } 
-}
+
